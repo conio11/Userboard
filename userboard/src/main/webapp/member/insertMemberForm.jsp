@@ -22,7 +22,7 @@
 		<div>
 			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
 		</div>
-		<h1>회원가입</h1>
+		<h1 class="text-center">회원가입</h1>
 	<%
 		if (request.getParameter("msg") != null) { // 넘어오는 msg 값이 있으면 실행
 	%>

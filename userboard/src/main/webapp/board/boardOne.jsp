@@ -26,9 +26,10 @@
 	}
 	System.out.println(currentPage + " <-- currentPage(boardOne)");  
 	
-	// 한 페이지에 5행씩 출력
+	// 한 페이지에 5행씩 댓글 출력
 	int rowPerPage = 5;
-	int startRow = 0;
+	int startRow = (currentPage - 1) * rowPerPage;
+	System.out.println(startRow + " <-- startRow(boardOne)");
 	
 	// 2. 모델 계층
 	// DB 연결
@@ -304,7 +305,6 @@
 			</ul>
 		
 		</div>
-		<br>
 		
 		<br>
 		

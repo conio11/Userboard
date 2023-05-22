@@ -6,7 +6,7 @@
 	// comment 테이블의 member_id와 세션 아이디가 같아야 삭제 가능 & comment_no 확인
 	
 	// 인코딩 설정
-	response.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 	
 	// 세션 유효성 확인: 세션 없는 경우(로그인 상태가 아닌 경우) home.jsp로 이동
 	String msg = "";

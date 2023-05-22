@@ -8,7 +8,7 @@
 	// * 요청분석(컨트롤러 계층) 후 모델 계층 생성
 	
 	//인코딩 설정
-	response.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 
 	// 1)) session - JSP내장(기본) 객체
 
@@ -168,7 +168,7 @@
 	
 			if (session.getAttribute("loginMemberID") == null) { // 로그인 전이면 로그인 폼 출력
 		%>
-				<form action="<%=request.getContextPath()%>/member/loginAction.jsp" method="post" accept-charset="UTF-8"> <!-- 인코딩 깨지는 현상 -->
+				<form action="<%=request.getContextPath()%>/member/loginAction.jsp" method="post" accept-charset="UTF-8"> 
 
 					<table class="table table-bordered table-sm">
 						<tr>

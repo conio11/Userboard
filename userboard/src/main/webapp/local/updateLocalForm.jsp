@@ -7,7 +7,7 @@
 	// 지역명 카테고리에 게시글 있는 경우 수정 불가
 	
 	// 인코딩 설정
-	response.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 
 	// 세션 유효성 확인: 세션 없는 경우(로그인 상태가 아닌 경우) home.jsp로 이동
 	String msg = "";
@@ -88,7 +88,7 @@
 		<%
 			}
 		%>
-		<form action="<%=request.getContextPath()%>/local/updateLocalAction.jsp" method="get"> <!-- post 사용 시 인코딩 깨지는 현상  -->
+		<form action="<%=request.getContextPath()%>/local/updateLocalAction.jsp" method="post"> 
 			<table class="table table-bordered">
 				<tr>
 					<th class="table-primary text-center">현재 카테고리명</th>

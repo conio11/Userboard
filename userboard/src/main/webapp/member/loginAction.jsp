@@ -5,7 +5,7 @@
 <%@ page import="vo.*"%>
 <%
 	// post 방식 인코딩 설정
-	response.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 		
 	// 세션 유효성 확인 -> 요청값 유효성 확인
 	

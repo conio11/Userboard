@@ -6,7 +6,7 @@
 
 <%
 	// post 방식 인코딩 설정
-	response.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 	
 	// 1. 컨트롤러 계층
 	// request값 확인

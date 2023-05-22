@@ -3,6 +3,9 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="java.net.*" %>
 <%
+	// post 방식 인코딩 설정
+	request.setCharacterEncoding("UTF-8");
+
 	// 회원 탈퇴(delete)	
 	// 세션 유효성 확인 - 로그인 상태가 아닌 경우 home.jsp로 이동
 	// 세션 아이디 확인

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	// 인코딩 설정	
+	request.setCharacterEncoding("UTF-8");
+
 	// 로그인된 상태이면 home.jsp로 이동
 	if (session.getAttribute("memberID") != null) {
 		response.sendRedirect(request.getContextPath() + "/home.jsp");

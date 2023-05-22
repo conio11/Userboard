@@ -5,7 +5,7 @@
 	// 새 지역을 입력하는 폼
 	
 	// 인코딩 설정
-	response.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 
 	// 세션 유효성 확인 - 세션 없으면(로그인 상태가 아니면) home.jsp로 이동
 	String msg = "";

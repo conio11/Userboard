@@ -10,7 +10,7 @@
 	// 수정, 삭제의 경우 게시글이 없는 카테고리(지역명)만 가능
 	
 	// 인코딩 설정
-	response.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 	
 	// 세션 유효성 확인 - 세션 없으면(로그인 상태가 아니면) home.jsp로 이동
 	String msg = "";

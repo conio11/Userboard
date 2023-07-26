@@ -4,5 +4,3 @@
 - 기간: 2023.05.02 - 2023.05.22
 - 개발환경: Eclipse, HeidiSQL DB(MariaDB 3.1.3), WAS-Tomcat(9.0.75), Dynamic Web Module(4.0)
 - 사용 언어: Java17(JSP), SQL 
-- 남은 수정사항
-    - CSS 요소

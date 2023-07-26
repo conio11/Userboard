@@ -70,9 +70,10 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<div>
-			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		</div>
+		
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+
+		<div class="container mt-3">
 		<br>
 		<!-- cnt가 0 (게시글이 0)인 경우에만 form 태그 출력  -->
 		<%
@@ -89,17 +90,18 @@
 			}
 		%>
 		<form action="<%=request.getContextPath()%>/local/updateLocalAction.jsp" method="post"> 
+			<input type="hidden" name="localName" value="<%=localName%>">
 			<table class="table table-bordered">
 				<tr>
-					<th class="table-primary text-center">현재 카테고리명</th>
-					<td><input type="text" name="localName" value="<%=localName%>" readonly="readonly"></td>
+					<th class="table-success text-center">현재 카테고리명</th>
+					<td><%=localName%></td>
 				</tr>
 				<tr>
-					<th class="table-primary text-center">새 카테고리명</th>
-					<td><input type="text" name="newLocalName"></td>
+					<th class="table-success text-center">새 카테고리명</th>
+					<td><input type="text" name="newLocalName" class="form-control w-25"></td>
 				</tr>
 			</table>
-			<button type="submit" class="btn btn-outline-primary">수정</button>
+			<button type="submit" class="btn btn-outline-success">수정</button>
 		</form>
 		<%
 			} else {
@@ -108,15 +110,13 @@
 			<h5>게시글이 존재하므로 수정 불가능합니다.</h5>
 			<h5><%=localName%> 카테고리 게시글 수: <%=cnt%></h5>
 		
-			<a href="<%=request.getContextPath()%>/local/localOne.jsp" class="btn btn-outline-primary">이전</a>
+			<a href="<%=request.getContextPath()%>/local/localOne.jsp" class="btn btn-outline-success">이전</a>
 		<%
 			}
 		%>
 		<br>
 		<br>
-		<div >
-			<!-- include 페이지 : Copyright &copy; 구디아카데미 -->
-			<jsp:include page="/inc/copyright.jsp"></jsp:include>
 		</div>
+		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</body>
 </html>

@@ -28,27 +28,29 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<div>
-			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		</div>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<div class="container mt-3">
 		<div class="text-center">
 			<h1>회원 탈퇴</h1>
 		</div>
 		<form action="<%=request.getContextPath()%>/member/deleteMemberAction.jsp" method="post">
-		<%
-			if (request.getParameter("msg") != null) { // 액션 페이지에서 넘어올 때 msg에 값이 있으면 출력
-		%>
-				<%=request.getParameter("msg")%>
-		<%	
-			}
-		%>
-		<table class="table table-bordered">
-			<tr>
-				<th class="table-primary text-center">비밀번호 확인</th>
-				<td><input type="password" name="currentPw"></td>
-			</tr>
-		</table>
-		<button type="submit" class="btn btn-outline-primary">회원 탈퇴</button>
+			<%
+				if (request.getParameter("msg") != null) { // 액션 페이지에서 넘어올 때 msg에 값이 있으면 출력
+			%>
+					<%=request.getParameter("msg")%>
+			<%	
+				}
+			%>
+			<br>
+			<table class="table table-bordered">
+				<tr>
+					<th class="table-success text-center">비밀번호 확인</th>
+					<td><input type="password" name="currentPw" class="form-control w-25"></td>
+				</tr>
+			</table>
+			<button type="submit" class="btn btn-outline-success">회원 탈퇴</button>
 		</form>
+		</div>
+		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</body>
 </html>

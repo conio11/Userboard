@@ -67,35 +67,35 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<div>
-			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		</div>
-		<div class="container mt-3 d-flex justify-content-center">
-			<h1>회원 정보</h1>
-		</div>
-		<table class="table table-bordered">
-			<tr>
-				<th class="table-primary text-center">회원ID</th>
-				<td><%=member.getMemberID()%></td>
-			</tr>
-			<tr>
-				<th class="table-primary text-center">가입일자</th>
-				<td><%=member.getCreatedate()%></td>
-			</tr>
-			<tr>
-				<th class="table-primary text-center">정보수정일자</th>
-				<td><%=member.getUpdatedate()%></td>
-			</tr>
-		</table>
-		<div>
-			<a href="<%=request.getContextPath()%>/member/updatePwForm.jsp?loginMemberID=<%=loginMemberID%>" class="btn btn-outline-primary">회원정보 수정</a>
-			<a href="<%=request.getContextPath()%>/member/deleteMemberForm.jsp" class="btn btn-outline-primary">회원 탈퇴</a>
-		</div>
-		<br>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<div class="container mt-3">
+			<div class="text-center">
+				<h1>회원 정보</h1>
+			</div>
+			<table class="table table-bordered">
+				<tr>
+					<th class="table-success text-center">회원ID</th>
+					<td><%=member.getMemberID()%></td>
+				</tr>
+				<tr>
+					<th class="table-success text-center">가입일자</th>
+					<td><%=member.getCreatedate()%></td>
+				</tr>
+				<tr>
+					<th class="table-success text-center">정보수정일자</th>
+					<td><%=member.getUpdatedate()%></td>
+				</tr>
+			</table>
 			<div>
-			<!-- include 페이지 : Copyright &copy; 구디아카데미 -->
-			<jsp:include page="/inc/copyright.jsp"></jsp:include>
-		</div>	
+				<a href="<%=request.getContextPath()%>/member/updatePwForm.jsp?loginMemberID=<%=loginMemberID%>" class="btn btn-outline-success">회원정보 수정</a>
+				<a href="<%=request.getContextPath()%>/member/deleteMemberForm.jsp" class="btn btn-outline-success">회원 탈퇴</a>
+			</div>
+			<br>
+				<div>
 	
+			</div>	
+		</div>
+					<!-- include 페이지 : Copyright &copy; 구디아카데미 -->
+			<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</body>
 </html>

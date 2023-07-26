@@ -62,9 +62,8 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<div>
-			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		</div>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<div class="container mt-3">
 		<br>
 		<!-- 세션 아이디와 member_id가 같은 경우만 form 태그 출력 -->
 		<%
@@ -73,23 +72,23 @@
 			<form action="<%=request.getContextPath()%>/board/deleteBoardAction.jsp" method="post">
 				<table class="table table-bordered">
 					<tr>
-						<th class="table-primary text-center">boardNo</th>
+						<th class="table-success text-center">boardNo</th>
 						<td><input type="text" name="boardNo" value="<%=boardNo%>" readonly="readonly"></td>
 					</tr>
 					<tr>
-						<th class="table-primary text-center">localName</th>
+						<th class="table-success text-center">localName</th>
 						<td><input type="text" name="localName" value="<%=localName%>" readonly="readonly"></td>
 					</tr>
 					<tr>
-						<th class="table-primary text-center">boardTitle</th>
+						<th class="table-success text-center">boardTitle</th>
 						<td><input type="text" name="boardTitle" value="<%=boardTitle%>" readonly="readonly"></td>
 					</tr >
 					<tr>
-						<th class="table-primary text-center">boardContent</th>
+						<th class="table-success text-center">boardContent</th>
 						<td><input type="text" name="boardContent" value="<%=boardContent%>" readonly="readonly"></td>
 					</tr>
 					<tr>
-						<th class="table-primary text-center">memberID</th>
+						<th class="table-success text-center">memberID</th>
 						<td><input type="text" name="memberID" value="<%=memberID%>" readonly="readonly"></td>
 					</tr>
 				</table>
@@ -101,15 +100,17 @@
 				<h5>로그인 계정과 게시글 작성자가 일치하지 않습니다. 삭제할 수 없습니다.</h5>
 				<h5>현재 로그인 계정: <%=loginMemberID%></h5>
 				
-				<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class="btn btn-outline-primary">이전</a>
+				<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class="btn btn-outline-success">이전</a>
 		<%	
 			}
 		%>
 		<br>
 		<br>
 		<div >
-			<!-- include 페이지 : Copyright &copy; 구디아카데미 -->
-			<jsp:include page="/inc/copyright.jsp"></jsp:include>
+			
 		</div>
+		</div>
+		<!-- include 페이지 : Copyright &copy; 구디아카데미 -->
+		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</body>
 </html>

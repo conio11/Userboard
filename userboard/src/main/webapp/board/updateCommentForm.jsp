@@ -69,9 +69,9 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<div>
-			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		</div>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<div class="container mt-3">
+
 		<br>
 		<!-- 세션 아이디, member_id가 같은 경우에만 form 태그 출력 -->
 		<%
@@ -90,15 +90,15 @@
 				
 				<table class="table table-bordered">
 					<tr>
-						<th class="table-primary text-center">작성자</th>
+						<th class="table-success text-center">작성자</th>
 						<td><input type="text" name="memberID" value="<%=memberID%>" readonly="readonly"></td>
 					</tr>
 					<tr>
-						<th class="table-primary text-center">댓글 내용</th>
+						<th class="table-success text-center">댓글 내용</th>
 						<td><input type="text" name="commentContent"></td>
 					</tr>
 				</table>
-				<button type="submit" class="btn btn-outline-primary">댓글 수정</button>
+				<button type="submit" class="btn btn-outline-success">댓글 수정</button>
 			</form>
 		<%
 			} else {
@@ -106,15 +106,13 @@
 				<h5>로그인 계정과 댓글 작성자가 일치하지 않습니다. 수정할 수 없습니다.</h5>
 				<h5>현재 로그인 계정: <%=loginMemberID%></h5>
 				
-				<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class="btn btn-outline-primary">이전</a>
+				<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class="btn btn-outline-success">이전</a>
 		<%
 			}
 		%>
 		<br>
 		<br>
-		<div >
-			<!-- include 페이지 : Copyright &copy; 구디아카데미 -->
-			<jsp:include page="/inc/copyright.jsp"></jsp:include>
 		</div>
+		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</body>
-</html>f
+</html>

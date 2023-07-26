@@ -68,9 +68,8 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<div>
-			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		</div>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<div class="container mt-3">
 		<br>
 		<!-- 세션 아이디와 member_id가 같은 경우에만 form 태그 출력 -->
 		<%
@@ -104,9 +103,7 @@
 		%>
 		<br>
 		<br>
-		<div >
-			<!-- include 페이지 : Copyright &copy; 구디아카데미 -->
-			<jsp:include page="/inc/copyright.jsp"></jsp:include>
 		</div>
+		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</body>
 </html>

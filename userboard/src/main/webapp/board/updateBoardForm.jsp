@@ -74,9 +74,8 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<div>
-			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		</div>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<div class="container mt-3">
 		<br>
 		<%
 			if (request.getParameter("msg") != null) {
@@ -93,27 +92,27 @@
 				<form action="<%=request.getContextPath()%>/board/updateBoardAction.jsp" method="post">
 					<table class="table table-bordered">
 						<tr>
-							<th class="table-primary text-center">boardNo</th>
+							<th class="table-success text-center">boardNo</th>
 							<td><input type="text" name="boardNo" value="<%=boardNo%>" readonly="readonly"></td>
 						</tr>
 						<tr>
-							<th class="table-primary text-center">localName</th>
+							<th class="table-success text-center">localName</th>
 							<td><input type="text" name="localName"></td>
 						</tr>
 						<tr>
-							<th class="table-primary text-center">boartTitle</th>
+							<th class="table-success text-center">boartTitle</th>
 							<td><input type="text" name="boardTitle"></td>
 						</tr>
 						<tr>
-							<th class="table-primary text-center">boardContent</th>
+							<th class="table-success text-center">boardContent</th>
 							<td><textarea rows="2" cols="80" name="boardContent"></textarea></td>
 						</tr>
 						<tr>
-							<th class="table-primary text-center">memberID</th>
+							<th class="table-success text-center">memberID</th>
 							<td><input type="text" name="memberID" value="<%=memberID%>" readonly="readonly"></td>
 						</tr>
 					</table>
-					<button type="submit" class="btn btn-outline-primary">게시글 수정</button>
+					<button type="submit" class="btn btn-outline-success">게시글 수정</button>
 				</form>
 		<%
 			} else {
@@ -121,15 +120,14 @@
 				<h5>로그인 계정과 게시글 작성자가 일치하지 않습니다. 수정할 수 없습니다.</h5>
 				<h5>현재 로그인 계정: <%=loginMemberID%></h5>
 				
-				<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class="btn btn-outline-primary">이전</a>
+				<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class="btn btn-outline-success">이전</a>
 		<%
 			}
 		%>
 		<br>
 		<br>
-		<div >
-			<!-- include 페이지 : Copyright &copy; 구디아카데미 -->
-			<jsp:include page="/inc/copyright.jsp"></jsp:include>
 		</div>
+
+		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</body>
 </html>

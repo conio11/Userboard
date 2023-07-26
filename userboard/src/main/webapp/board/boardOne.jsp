@@ -136,12 +136,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	    <style>
+			.page-link {
+				color: #198754; /* 부트스트랩5 success 컬러코드*/
+			}
+			.page-item.active .page-link {
+				color: white;
+				background-color: #198754;
+				border-color: #198754;
+			} 
+	  </style>
 	</head>
 	<body>
-		<!-- 메인 메뉴(가로) -->
-		<div>
-			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		</div>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<div class="container mt-3">
 		
 		<div class="text-center">
 			<h1>상세 페이지</h1>
@@ -157,38 +165,38 @@
 		<!-- boardOne 결과셋  -->
 		<table class="table table-bordered">
 			<tr>
-				<th class="table-primary text-center">게시글 번호</th>
-				<td><%=board.getBoardNo()%><td>
+				<th class="table-success text-center" style="width: 150px;">게시글 번호</th>
+				<td><%=board.getBoardNo()%></td>
 			</tr>
 			<tr>
-				<th class="table-primary text-center">카테고리명</th>
-				<td><%=board.getLocalName()%><td>
+				<th class="table-success text-center">카테고리명</th>
+				<td><%=board.getLocalName()%></td>
 			</tr>
 			<tr>
-				<th class="table-primary text-center">게시글 제목</th>
-				<td><%=board.getBoardTitle()%><td>
+				<th class="table-success text-center">게시글 제목</th>
+				<td><%=board.getBoardTitle()%></td>
 			</tr>
 			<tr>
-				<th class="table-primary text-center">게시글 내용</th>
-				<td><%=board.getBoardContent()%><td>
+				<th class="table-success text-center">게시글 내용</th>
+				<td><%=board.getBoardContent()%></td>
 			</tr>
 			<tr>
-				<th class="table-primary text-center">작성자</th>
-				<td><%=board.getMemberID()%><td>
+				<th class="table-success text-center">작성자</th>
+				<td><%=board.getMemberID()%></td>
 			</tr>
 			<tr>
-				<th class="table-primary text-center">작성일자</th>
-				<td><%=board.getCreatedate().substring(0, 10)%><td>
+				<th class="table-success text-center">작성일자</th>
+				<td><%=board.getCreatedate().substring(0, 10)%></td>
 			</tr>
 			<tr>
-				<th class="table-primary text-center">수정일자</th>
-				<td><%=board.getUpdatedate().substring(0, 10)%><td>
+				<th class="table-success text-center">수정일자</th>
+				<td><%=board.getUpdatedate().substring(0, 10)%></td>
 			</tr>
 		</table>
 
 		<div>
-			<a href="<%=request.getContextPath()%>/board/updateBoardForm.jsp?boardNo=<%=board.getBoardNo()%>&localName=<%=board.getLocalName()%>&boardTitle=<%=board.getBoardTitle()%>&boardContent=<%=board.getBoardContent()%>&memberID=<%=board.getMemberID()%>" class="btn btn-outline-primary">게시글 수정</a>
-			<a href="<%=request.getContextPath()%>/board/deleteBoardForm.jsp?boardNo=<%=board.getBoardNo()%>&localName=<%=board.getLocalName()%>&boardTitle=<%=board.getBoardTitle()%>&boardContent=<%=board.getBoardContent()%>&memberID=<%=board.getMemberID()%>" class="btn btn-outline-primary">삭제</a>
+			<a href="<%=request.getContextPath()%>/board/updateBoardForm.jsp?boardNo=<%=board.getBoardNo()%>&localName=<%=board.getLocalName()%>&boardTitle=<%=board.getBoardTitle()%>&boardContent=<%=board.getBoardContent()%>&memberID=<%=board.getMemberID()%>" class="btn btn-outline-success">게시글 수정</a>
+			<a href="<%=request.getContextPath()%>/board/deleteBoardForm.jsp?boardNo=<%=board.getBoardNo()%>&localName=<%=board.getLocalName()%>&boardTitle=<%=board.getBoardTitle()%>&boardContent=<%=board.getBoardContent()%>&memberID=<%=board.getMemberID()%>" class="btn btn-outline-success">삭제</a>
 		</div>
 		
 		<br>
@@ -215,20 +223,24 @@
 		%>
 				<form action="<%=request.getContextPath()%>/board/insertCommentAction.jsp" method="post">
 					<input type="hidden" name="boardNo" value="<%=board.getBoardNo()%>">
-					<input type="text" name="memberID" value="<%=loginMemberID%>" readonly="readonly">
+					<input type="hidden" name="memberID" value="<%=loginMemberID%>">
 					<table class="table table-bordered mx-auto">
+						<tr>
+							<th class="table-success text-center">작성자</th>
+							<td><%=loginMemberID%></td>
+						</tr>
 						<tr>
 				<%-- 			<th>boardNo</th>
 							<td>
 								<input type="text" name="boardNo" value="<%=board.boardNo%>" readonly="readonly">
 							</td> --%>
-							<th class="table-primary text-center">commentContent</th>
+							<th class="table-success text-center">내용</th>
 							<td>
-								<textarea rows="2" cols="80" name="commentContent"></textarea>
+								<textarea rows="2" cols="80" name="commentContent" class="form-control"></textarea>
 							</td>
 						</tr>
 					</table>
-					<button type="submit" class="btn btn-outline-primary">댓글 입력</button>
+					<button type="submit" class="btn btn-outline-success">댓글 입력</button>
 				</form>
 				<br>
 		<%
@@ -238,7 +250,7 @@
 		<!-- comment list 결과셋  -->
 		<!-- 댓글 출력 -->
 		<table class="table table-bordered">
-			<tr class="table-primary text-center">
+			<tr class="table-success text-center">
 				<th>작성자</th>
 				<th>댓글 내용</th>
 				<th>작성일자</th>
@@ -254,8 +266,8 @@
 				<td><%=c.getCommentContent()%></td>
 				<td><%=c.getCreatedate().substring(0, 10)%></td>
 				<td><%=c.getUpdatedate().substring(0, 10)%></td>
-				<td><a href="<%=request.getContextPath()%>/board/updateCommentForm.jsp?memberID=<%=c.getMemberID()%>&commentContent=<%=c.getCommentContent()%>&commentNo=<%=c.getCommentNo()%>&boardNo=<%=board.getBoardNo()%>" class="btn btn-outline-primary">수정</a></td>
-				<td><a href="<%=request.getContextPath()%>/board/deleteCommentForm.jsp?memberID=<%=c.getMemberID()%>&commentContent=<%=c.getCommentContent()%>&commentNo=<%=c.getCommentNo()%>&boardNo=<%=board.getBoardNo()%>" class="btn btn-outline-primary">삭제</a></td>
+				<td><a href="<%=request.getContextPath()%>/board/updateCommentForm.jsp?memberID=<%=c.getMemberID()%>&commentContent=<%=c.getCommentContent()%>&commentNo=<%=c.getCommentNo()%>&boardNo=<%=board.getBoardNo()%>" class="btn btn-outline-success">수정</a></td>
+				<td><a href="<%=request.getContextPath()%>/board/deleteCommentForm.jsp?memberID=<%=c.getMemberID()%>&commentContent=<%=c.getCommentContent()%>&commentNo=<%=c.getCommentNo()%>&boardNo=<%=board.getBoardNo()%>" class="btn btn-outline-success">삭제</a></td>
 			</tr>
 		<% 		
 			}
@@ -312,7 +324,7 @@
 		<%
 			if (board.getBoardNo() > startBoardNo) { // boardNo의 첫 번째 번호보다 클 때
 		%>
-				<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo - 1%>" class="btn btn-outline-primary">이전 글</a>
+				<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo - 1%>" class="btn btn-outline-success">이전 글</a>
 		<%
 			}
 		%>
@@ -320,14 +332,16 @@
 		<%
 			if (board.getBoardNo() < lastBoardNo) { // boardNo의 마지막 번호보다 작을 때
 		%>
-				<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo + 1%>" class="btn btn-outline-primary">다음 글</a>
+				<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo + 1%>" class="btn btn-outline-success">다음 글</a>
 		<%
 			}
 		%>
 		</div>	
+			</div>
 		<div>
 			<!-- include 페이지 : Copyright &copy; 구디아카데미 -->
 			<jsp:include page="/inc/copyright.jsp"></jsp:include>
 		</div>	
+	
 	</body>
 </html>

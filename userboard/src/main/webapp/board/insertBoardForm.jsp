@@ -32,32 +32,30 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<div>
-			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		</div>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<div class="container mt-3">
+
 		<br>
 		<form action="<%=request.getContextPath()%>/board/insertBoardAction.jsp" method="post">
 			<table class="table table-bordered">
 				<tr>
-					<th class="table-primary text-center">localName</th>
-					<td><input type="text" name="localName"></td>
+					<th class="table-success text-center">localName</th>
+					<td><input type="text" name="localName" class="form-control w-25"></td>
 				</tr>
 				<tr>
-					<th class="table-primary text-center">boardTitle</th>
-					<td><input type="text" name="boardTitle"></td>
+					<th class="table-success text-center">boardTitle</th>
+					<td><input type="text" name="boardTitle" class="form-control"></td>
 				</tr>
 				<tr>
-					<th class="table-primary text-center">boardContent</th>
-					<td><textarea rows="2" cols="80" name="boardContent"></textarea></td>
+					<th class="table-success text-center">boardContent</th>
+					<td><textarea rows="2" cols="80" name="boardContent" class="form-control"></textarea></td>
 				</tr>
 			</table>
-			<button type="submit" class="btn btn-outline-primary">게시글 입력</button>
+			<button type="submit" class="btn btn-outline-success">게시글 입력</button>
 		</form>
 		<br>
 		<br>
-		<div >
-			<!-- include 페이지 : Copyright &copy; 구디아카데미 -->
-			<jsp:include page="/inc/copyright.jsp"></jsp:include>
 		</div>
+		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</body>
 </html>

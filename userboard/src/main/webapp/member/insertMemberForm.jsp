@@ -22,10 +22,10 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<div>
-			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		</div>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<div class="container mt-3">
 		<h1 class="text-center">회원가입</h1>
+		<br>
 	<%
 		if (request.getParameter("msg") != null) { // 넘어오는 msg 값이 있으면 실행
 	%>
@@ -36,19 +36,19 @@
 		<form action="<%=request.getContextPath()%>/member/insertMemberAction.jsp" method="post" accept-charset="UTF-8">
 			<table class="table table-bordered">
 				<tr>
-					<th class="table-primary text-center">아이디</th>
-					<td><input type="text" name="memberID"></td>
+					<th class="table-success text-center">아이디</th>
+					<td><input type="text" name="memberID" class="form-control w-25"></td>
 				</tr>
 				<tr>
-					<th class="table-primary text-center">비밀번호</th>
-					<td><input type="password" name="memberPW"></td>
+					<th class="table-success text-center">비밀번호</th>
+					<td><input type="password" name="memberPW" class="form-control w-25"></td>
 				</tr>
 			</table>
-			<button type="submit" class="btn btn-outline-primary">회원가입</button>
+			<button type="submit" class="btn btn-outline-success">회원가입</button>
 		</form>
 		<br>
-		<div>
-			<jsp:include page="/inc/copyright.jsp"></jsp:include>
+
 		</div>
+		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</body>
 </html>

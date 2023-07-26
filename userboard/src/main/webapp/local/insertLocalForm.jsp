@@ -28,9 +28,8 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<div>
-			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		</div>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<div class="container mt-3">
 		<br>
 		<div class="text-center">
 			<h1>새 지역 입력</h1>
@@ -44,21 +43,20 @@
 		}
 	%>
 		<form action="<%=request.getContextPath()%>/local/insertLocalAction.jsp" method="post">
+			<br>
 			<table class="table table-bordered">
 				<tr>
-					<th class="table-primary text-center">localName</th>
+					<th class="table-success text-center">localName</th>
 					<td>
-						<input type="text" name="localName">
-						<button type="submit" class="btn btn-outline-primary">입력</button>
-					</td>
+						<input type="text" name="localName" class="form-control w-25">
+					</td>					
 				</tr>
 			</table>
+			<button type="submit" class="btn btn-outline-success">입력</button>
 		</form>
 		<br>
 		<br>
-		<div >
-			<!-- include 페이지 : Copyright &copy; 구디아카데미 -->
-			<jsp:include page="/inc/copyright.jsp"></jsp:include>
 		</div>
+		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</body>
 </html>

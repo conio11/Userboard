@@ -63,9 +63,8 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>	
-		<div>
-			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		</div>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<div class="container mt-3">
 		<div class="container mt-3 d-flex justify-content-center">
 			<h1>비밀번호 수정</h1>
 		</div>
@@ -79,23 +78,25 @@
 		%>
 		<table class="table table-bordered">
 			<tr>
-				<th class="table-primary text-center">회원ID</th>
+				<th class="table-success text-center">회원ID</th>
 				<td><%=member.getMemberID()%></td>
 			</tr>
 			<tr>
-				<th class="table-primary text-center">기존 비밀번호 입력</th>
-				<td><input type="password" name="currentPw"></td>
+				<th class="table-success text-center">기존 비밀번호 입력</th>
+				<td><input type="password" name="currentPw" class="form-control w-25"></td>
 			</tr>
 			<tr>
-				<th class="table-primary text-center">새 비밀번호 입력</th>
-				<td><input type="password" name="newPw"></td>
+				<th class="table-success text-center">새 비밀번호 입력</th>
+				<td><input type="password" name="newPw" class="form-control w-25"></td>
 			</tr>
 			<tr>
-				<th class="table-primary text-center">새 비밀번호 다시 입력</th>
-				<td><input type="password" name="newPw2"></td>
+				<th class="table-success text-center">새 비밀번호 다시 입력</th>
+				<td><input type="password" name="newPw2" class="form-control w-25"></td>
 			</tr>
 		</table>
-		<button type="submit" class="btn btn-outline-primary">비밀번호 변경</button>
+		<button type="submit" class="btn btn-outline-success">비밀번호 변경</button>
 		</form>
+		</div>
+		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</body>
 </html>

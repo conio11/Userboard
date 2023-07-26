@@ -63,9 +63,8 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<div>
-			<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		</div>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<div class="container mt-3">
 		<div class="text-center">
 			<h1>카테고리 정보</h1>
 		</div>
@@ -76,8 +75,9 @@
 		<%
 			}
 		%>
+		<br>
 		<table class="table table-bordered text-center">
-			<tr class="table-primary">
+			<tr class="table-success">
 				<th>카테고리명</th>
 				<th>생성일자</th>
 				<th>수정</th>
@@ -90,20 +90,18 @@
 			<tr>
 				<td><%=l.getLocalName()%></td>
 				<td><%=l.getCreatedate().substring(0, 10)%></td>
-				<td><a href="<%=request.getContextPath()%>/local/updateLocalForm.jsp?localName=<%=l.getLocalName()%>" class="btn btn-outline-primary">수정</a></td>
-				<td><a href="<%=request.getContextPath()%>/local/deleteLocalForm.jsp?localName=<%=l.getLocalName()%>" class="btn btn-outline-primary">삭제</a></td>
+				<td><a href="<%=request.getContextPath()%>/local/updateLocalForm.jsp?localName=<%=l.getLocalName()%>" class="btn btn-outline-success">수정</a></td>
+				<td><a href="<%=request.getContextPath()%>/local/deleteLocalForm.jsp?localName=<%=l.getLocalName()%>" class="btn btn-outline-success">삭제</a></td>
 			</tr>
 		<%
 			}
 		%>
 		</table>
 		<div class="text-center">
-			<a href="<%=request.getContextPath()%>/local/insertLocalForm.jsp" class="btn btn-outline-primary">새 카테고리 입력</a>
+			<a href="<%=request.getContextPath()%>/local/insertLocalForm.jsp" class="btn btn-outline-success">새 카테고리 입력</a>
 		</div>
 		<br>
-		<div >
-			<!-- include 페이지 : Copyright &copy; 구디아카데미 -->
-			<jsp:include page="/inc/copyright.jsp"></jsp:include>
 		</div>
+		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</body>
 </html>

@@ -126,7 +126,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Bootstrap 5 Website Example</title>
+      <title>home</title>
+      <jsp:include page="/inc/link.jsp"></jsp:include>
 	  <meta charset="utf-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -243,15 +244,18 @@
               <li class="page-item">
                 <a class="page-link" href="./home.jsp?currentPage=<%=minPage - pagePerPage%>&localName=<%=localName%>">Previous</a>
               </li>
-            <% } %>
+            <% 
+            	}
+            %>
             <% for (int i = minPage; i <= maxPage; i++) { %>
               <li class="page-item <%= i == currentPage ? "active" : "" %>">
-                <a class="page-link" href="./home.jsp?currentPage=<%=i%>&localName=<%=localName%>"><%=i%></a>
+                <a class="page-link" href="<%=request.getContextPath()%>/home.jsp?currentPage=<%=i%>&localName=<%=localName%>"><%=i%></a>
               </li>
             <% } %>
+            
             <% if (maxPage < lastPage) { %>
               <li class="page-item">
-                <a class="page-link" href="./home.jsp?currentPage=<%=minPage + pagePerPage%>&localName=<%=localName%>">Next</a>
+                <a class="page-link" href="<%=request.getContextPath()%>/home.jsp?currentPage=<%=minPage + pagePerPage%>&localName=<%=localName%>">Next</a>
               </li>
             <% 
             	} 
@@ -263,7 +267,6 @@
     </div>
   </div>
   
-  <!-- ... 하단 부분 ... -->
   <jsp:include page="/inc/copyright.jsp"></jsp:include>
 </body>
 </html>

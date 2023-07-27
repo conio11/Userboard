@@ -65,6 +65,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>updateLocalForm</title>
+		<jsp:include page="/inc/link.jsp"></jsp:include>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -74,14 +75,15 @@
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
 
 		<div class="container mt-3">
+		<a href="<%=request.getContextPath()%>/local/localOne.jsp" class="btn btn-outline-success">이전</a>
 		<br>
 		<!-- cnt가 0 (게시글이 0)인 경우에만 form 태그 출력  -->
 		<%
 			if (cnt == 0) { 
 		%>
-		<div class="text-center">
-			<h1>카테고리명 수정</h1>
-		</div>
+			<div class="text-center">
+				<h1>카테고리명 수정</h1>
+			</div><br>
 		<%
 			if (request.getParameter("msg") != null) {	
 		%>

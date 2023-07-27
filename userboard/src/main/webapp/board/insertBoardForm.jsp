@@ -33,9 +33,20 @@
 	</head>
 	<body>
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-		<div class="container mt-3">
-
 		<br>
+		<div class="container mt-3">
+		<div class="text-center">
+			<h1>게시글 입력</h1>
+		</div>
+		<br>
+		
+		<% 
+			if (request.getParameter("msg") != null) { // 액션 파일에서 넘어오는 값이 있는 경우 실행
+		%>
+				<%=request.getParameter("msg")%>
+		<%
+			}
+		%>
 		<form action="<%=request.getContextPath()%>/board/insertBoardAction.jsp" method="post">
 			<table class="table table-bordered">
 				<tr>

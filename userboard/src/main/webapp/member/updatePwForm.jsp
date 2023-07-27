@@ -65,9 +65,10 @@
 	<body>	
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
 		<div class="container mt-3">
-		<div class="container mt-3 d-flex justify-content-center">
+		<a href="<%=request.getContextPath()%>/member/memberInfo.jsp" class="btn btn-outline-success">이전</a>
+		<div class="text-center">
 			<h1>비밀번호 수정</h1>
-		</div>
+		</div><br>
 		<form action="<%=request.getContextPath()%>/member/updatePwAction.jsp" method="post">
 		<%
 			if (request.getParameter("msg") != null) { // 액션 페이지에서 넘어올 때 msg에 값이 있으면 출력

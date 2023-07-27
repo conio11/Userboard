@@ -63,11 +63,11 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include><br>
 		<div class="container mt-3">
 		<div class="text-center">
 			<h1>카테고리 정보</h1>
-		</div>
+		</div><br>
 		<% 
 			if (request.getParameter("msg") != null) { 
 		%>
@@ -75,7 +75,6 @@
 		<%
 			}
 		%>
-		<br>
 		<table class="table table-bordered text-center">
 			<tr class="table-success">
 				<th>카테고리명</th>

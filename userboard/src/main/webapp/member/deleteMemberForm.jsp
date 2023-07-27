@@ -30,6 +30,7 @@
 	<body>
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
 		<div class="container mt-3">
+		<a href="<%=request.getContextPath()%>/member/memberInfo.jsp" class="btn btn-outline-success">이전</a>
 		<div class="text-center">
 			<h1>회원 탈퇴</h1>
 		</div>

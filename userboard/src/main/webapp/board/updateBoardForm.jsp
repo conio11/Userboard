@@ -69,6 +69,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>updateBoardForm</title>
+		<jsp:include page="/inc/link.jsp"></jsp:include>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -76,7 +77,6 @@
 	<body>
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
 		<div class="container mt-3">
-		<br>
 		<%
 			if (request.getParameter("msg") != null) {
 		%>
@@ -89,27 +89,34 @@
 		<%
 			if (loginMemberID.equals(memberID)) {
 		%>
+				<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class="btn btn-outline-success">이전</a><br>
+				<div class="text-center">
+					<h1>게시글 수정</h1>
+				</div><br>
 				<form action="<%=request.getContextPath()%>/board/updateBoardAction.jsp" method="post">
+					<input type="hidden" name="boardNo" value="<%=boardNo%>">
+					<input type="hidden" name="memberID" value="<%=memberID%>">
+					
 					<table class="table table-bordered">
 						<tr>
 							<th class="table-success text-center">boardNo</th>
-							<td><input type="text" name="boardNo" value="<%=boardNo%>" readonly="readonly"></td>
+							<td><%=boardNo%></td>
 						</tr>
 						<tr>
 							<th class="table-success text-center">localName</th>
-							<td><input type="text" name="localName"></td>
+							<td><input type="text" name="localName" value="<%=localName%>"class="form-control w-25"></td>
 						</tr>
 						<tr>
 							<th class="table-success text-center">boartTitle</th>
-							<td><input type="text" name="boardTitle"></td>
+							<td><input type="text" name="boardTitle" value="<%=boardTitle%>" class="form-control"></td>
 						</tr>
 						<tr>
 							<th class="table-success text-center">boardContent</th>
-							<td><textarea rows="2" cols="80" name="boardContent"></textarea></td>
+							<td><textarea rows="2" cols="80" name="boardContent" class="form-control"><%=boardContent%></textarea></td>
 						</tr>
 						<tr>
 							<th class="table-success text-center">memberID</th>
-							<td><input type="text" name="memberID" value="<%=memberID%>" readonly="readonly"></td>
+							<td><%=memberID%></td>
 						</tr>
 					</table>
 					<button type="submit" class="btn btn-outline-success">게시글 수정</button>

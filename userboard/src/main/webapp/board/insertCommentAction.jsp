@@ -9,7 +9,7 @@
 
 	// 세션 유효성 확인 (로그인 여부)
 	// 세션 아이디값 없으면 (로그인되지 않은 상태이면) home.jsp로 이동
-	String msg = "";
+	String msgComment = "";
 	
 	if (session.getAttribute("loginMemberID") == null) {
 		response.sendRedirect(request.getContextPath() + "/home.jsp");
@@ -29,8 +29,8 @@
 	
 	if (request.getParameter("commentContent") == null 
 	|| request.getParameter("commentContent").equals("")) {
-		msg = URLEncoder.encode("댓글을 입력해주세요.", "UTF-8");	
-		response.sendRedirect(request.getContextPath() + "/board/boardOne.jsp?boardNo=" + boardNo + "&msg=" + msg);
+		msgComment = URLEncoder.encode("댓글을 입력해주세요.", "UTF-8");	
+		response.sendRedirect(request.getContextPath() + "/board/boardOne.jsp?boardNo=" + boardNo + "&msgComment=" + msgComment);
 		return; // 실행 종료
 	}
 	String commentContent = request.getParameter("commentContent");
@@ -63,12 +63,14 @@
 	int row = commentStmt.executeUpdate();
 	if (row == 1) { // 댓글 입력 성공
 		System.out.println("댓글 입력 성공(insertCommentAction)");
+		msgComment = URLEncoder.encode("댓글이 작성되었습니다.", "UTF-8");
 	} else { // 입력 실패
 		System.out.println("댓글 입력 실패(insertCommentAction)");
+		msgComment = URLEncoder.encode("댓글이 작성되지 않았습니다.", "UTF-8");
 	}
 	
 	// 모든 과정 종료 후 boardOne.jsp로 이동
-	response.sendRedirect(request.getContextPath() + "/board/boardOne.jsp?boardNo=" + boardNo);
+	response.sendRedirect(request.getContextPath() + "/board/boardOne.jsp?boardNo=" + boardNo + "&msgComment=" + msgComment);
 	
 	System.out.println("====================================");
 %>

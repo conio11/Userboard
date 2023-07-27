@@ -220,3 +220,17 @@
 		text-decoration: none;
 		color: #0100FF;
 	}
+	html, body {
+            height: 100%; /* html, body 요소의 높이를 창 크기의 100%로 설정하여 내용이 적어도 footer가 항상 페이지 하단 고정  */
+            margin: 0;
+            padding: 0;
+        }
+
+    body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            flex: 1;
+        }

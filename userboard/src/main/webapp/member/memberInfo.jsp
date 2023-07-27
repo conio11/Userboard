@@ -62,16 +62,17 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>memberInfo</title>
+		<jsp:include page="/inc/link.jsp"></jsp:include>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
-		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include><br>
 		<div class="container mt-3">
 			<div class="text-center">
 				<h1>회원 정보</h1>
-			</div>
+			</div><br>
 			<table class="table table-bordered">
 				<tr>
 					<th class="table-success text-center">회원ID</th>

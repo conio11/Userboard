@@ -29,7 +29,7 @@
 	System.out.println(loginMemberID + " <-- loginMemberID(deleteCommentAction)"); // 세션 아이디 디버깅
 	
 	// 요청값 유효성 확인
-	// 넘어온 기존 작성자명, 댓글 내용, 게시글 번호, 댓글 번호 중 하나라도 null 또는 공백일 경우 home2.jsp로 이동
+	// 넘어온 기존 작성자명, 댓글 내용, 게시글 번호, 댓글 번호 중 하나라도 null 또는 공백일 경우 home.jsp로 이동
 	if (request.getParameter("memberID") == null
 	|| request.getParameter("memberID").equals("")
 	|| request.getParameter("commentContent") == null
@@ -38,7 +38,7 @@
 	|| request.getParameter("boardNo").equals("")
 	|| request.getParameter("commentNo") == null
 	|| request.getParameter("commentNo").equals("")) {
-		response.sendRedirect(request.getContextPath() + "/home2.jsp");
+		response.sendRedirect(request.getContextPath() + "/home.jsp");
 		return;
 	}
 	String memberID = request.getParameter("memberID");
@@ -71,14 +71,15 @@
 	// 쿼리 실행 및 실행값 반환
 	int row = deleteStmt.executeUpdate();
 	System.out.println(row + " <-- row(deleteCommentAction)");
+	String msgDelete = "";
 	if (row == 1) { // 삭제 성공
 		System.out.println("댓글 삭제 완료");
-		msg = URLEncoder.encode("댓글이 삭제되었습니다.", "UTF-8"); 
-		response.sendRedirect(request.getContextPath() + "/board/boardOne.jsp?boardNo=" + boardNo + "&msg=" + msg);
+		msgDelete = URLEncoder.encode("댓글이 삭제되었습니다.", "UTF-8"); 
+		response.sendRedirect(request.getContextPath() + "/board/boardOne.jsp?boardNo=" + boardNo + "&msgDelete=" + msgDelete);
 	} else { // 삭제 실패
 		System.out.println("댓글 삭제 실패");
 		msg = URLEncoder.encode("댓글이 삭제되지 않았습니다.", "UTF-8"); 
-		response.sendRedirect(request.getContextPath() + "/board/boardOne.jsp?boardNo=" + boardNo + "&msg=" + msg);
+		response.sendRedirect(request.getContextPath() + "/board/boardOne.jsp?boardNo=" + boardNo + "&msgDelete=" + msgDelete);
 	}
 	
 	System.out.println("=====================");

@@ -148,19 +148,19 @@
 	  </style>
 	</head>
 	<body>
-		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include><br>
 		<div class="container mt-3">
-		
 		<div class="text-center">
-			<h1>상세 페이지</h1>
-		</div>
+			<h1>게시글</h1>
+		</div><br>
 		<%
-			if (request.getParameter("msg2") != null) {
+			if (request.getParameter("msg") != null) {
 		%>
-				<%=request.getParameter("msg2")%>
+				<%=request.getParameter("msg")%>
 		<%
 			}
 		%>
+		
 		
 		<!-- boardOne 결과셋  -->
 		<table class="table table-bordered">
@@ -206,11 +206,28 @@
 		<div class="text-center">
 			<h2>댓글</h2>
 		</div>
+		<br>
 		
 		<%
-			if (request.getParameter("msg") != null) {
+			if (request.getParameter("msgComment") != null) {
 		%>
-				<%=request.getParameter("msg")%>
+				<%=request.getParameter("msgComment")%>
+		<%
+			}
+		%>
+		
+		<%
+			if (request.getParameter("msgDelete") != null) {
+		%>
+				<%=request.getParameter("msgDelete")%>
+		<%
+			}
+		%>
+		
+		<%
+			if (request.getParameter("msg2") != null) {
+		%>
+				<%=request.getParameter("msg2")%>
 		<%
 			}
 		%>
@@ -320,7 +337,7 @@
 		
 		<br>
 		
-		<div class="text-center">
+<%-- 		<div class="text-center">
 		<%
 			if (board.getBoardNo() > startBoardNo) { // boardNo의 첫 번째 번호보다 클 때
 		%>
@@ -336,7 +353,7 @@
 		<%
 			}
 		%>
-		</div>	
+		</div>	 --%>
 			</div>
 		<div>
 			<!-- include 페이지 : Copyright &copy; 구디아카데미 -->

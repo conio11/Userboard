@@ -64,35 +64,44 @@
 	<body>
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
 		<div class="container mt-3">
-		<br>
 		<!-- 세션 아이디와 member_id가 같은 경우만 form 태그 출력 -->
 		<%
 			if (loginMemberID.equals(memberID)) {
 		%>
+			<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class="btn btn-outline-success">이전</a>
+			<div class="text-center">
+				<h1>게시글 삭제</h1>
+			</div><br>
 			<form action="<%=request.getContextPath()%>/board/deleteBoardAction.jsp" method="post">
+				<input type="hidden" name="boardNo" value="<%=boardNo%>">
+				<input type="hidden" name="localName" value="<%=localName%>">
+				<input type="hidden" name="boardTitle" value="<%=boardTitle%>">
+				<input type="hidden" name="boardContent" value="<%=boardContent%>">
+				<input type="hidden" name="memberID" value="<%=memberID%>">
+				
 				<table class="table table-bordered">
 					<tr>
 						<th class="table-success text-center">boardNo</th>
-						<td><input type="text" name="boardNo" value="<%=boardNo%>" readonly="readonly"></td>
+						<td><%=boardNo%></td>
 					</tr>
 					<tr>
 						<th class="table-success text-center">localName</th>
-						<td><input type="text" name="localName" value="<%=localName%>" readonly="readonly"></td>
+						<td><%=localName%></td>
 					</tr>
 					<tr>
 						<th class="table-success text-center">boardTitle</th>
-						<td><input type="text" name="boardTitle" value="<%=boardTitle%>" readonly="readonly"></td>
+						<td><%=boardTitle%></td>
 					</tr >
 					<tr>
 						<th class="table-success text-center">boardContent</th>
-						<td><input type="text" name="boardContent" value="<%=boardContent%>" readonly="readonly"></td>
+						<td><%=boardContent%></td>
 					</tr>
 					<tr>
 						<th class="table-success text-center">memberID</th>
-						<td><input type="text" name="memberID" value="<%=memberID%>" readonly="readonly"></td>
+						<td><%=memberID%></td>
 					</tr>
 				</table>
-				<button type="submit" class="btn btn-outline-primary">게시글 삭제</button>
+				<button type="submit" class="btn btn-outline-success">게시글 삭제</button>
 			</form>
 		<%
 			} else {

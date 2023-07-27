@@ -63,6 +63,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>deleteCommentForm</title>
+		<jsp:include page="/inc/link.jsp"></jsp:include>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -78,18 +79,20 @@
 			<form action="<%=request.getContextPath()%>/board/deleteCommentAction.jsp" method="post">
 				<input type="hidden" name="boardNo" value="<%=boardNo%>">
 				<input type="hidden" name="commentNo" value="<%=commentNo%>">
+				<input type="hidden" name="memberID" value="<%=memberID%>">
+				<input type="hidden" name="commentContent" value="<%=commentContent%>">
 				
 				<table class="table table-bordered">
 					<tr>
-						<th class="table-primary text-center">작성자</th>
-						<td><input type="text" name="memberID" value="<%=memberID%>" readonly="readonly"></td>
+						<th class="table-success text-center">작성자</th>
+						<td><%=memberID%></td>
 					</tr>
 					<tr>
-						<th class="table-primary text-center">댓글 내용</th>
-						<td><input type="text" name="commentContent" value="<%=commentContent%>" readonly="readonly"></td>
+						<th class="table-success text-center">댓글 내용</th>
+						<td><%=commentContent%></td>
 					</tr>
 				</table>
-				<button type="submit" class="btn btn-outline-primary">댓글 삭제</button>
+				<button type="submit" class="btn btn-outline-success">댓글 삭제</button>
 			</form>
 		<%
 			} else {
@@ -97,7 +100,7 @@
 				<h5>로그인 계정과 댓글 작성자가 일치하지 않습니다. 삭제할 수 없습니다.</h5>
 				<h5>현재 로그인 계정: <%=loginMemberID%></h5>
 				
-				<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class="btn btn-outline-primary">이전</a>
+				<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class="btn btn-outline-success">이전</a>
 		<%
 			}
 		%>

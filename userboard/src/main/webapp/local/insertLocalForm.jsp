@@ -23,6 +23,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>insertLocalForm</title>
+		<jsp:include page="/inc/link.jsp"></jsp:include>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -30,6 +31,7 @@
 	<body>
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
 		<div class="container mt-3">
+		<a href="<%=request.getContextPath()%>/local/localOne.jsp" class="btn btn-outline-success">이전</a>
 		<br>
 		<div class="text-center">
 			<h1>새 지역 입력</h1>

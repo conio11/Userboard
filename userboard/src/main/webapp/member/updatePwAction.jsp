@@ -41,7 +41,7 @@
 	
 	// 비밀번호 변경(update) 쿼리문
 	// UPDATE member SET member_pw=PASSWORD(?) WHERE member_id=? AND member_pw=PASSWORD(?)
-	String pwSql = "UPDATE member SET member_pw=PASSWORD(?) WHERE member_id=? AND member_pw=PASSWORD(?)";
+	String pwSql = "UPDATE member SET member_pw = PASSWORD(?), updatedate = NOW() WHERE member_id=? AND member_pw=PASSWORD(?)";
 	PreparedStatement pwStmt = conn.prepareStatement(pwSql);
 	pwStmt.setString(1, newPw);
 	pwStmt.setString(2, loginMemberID);

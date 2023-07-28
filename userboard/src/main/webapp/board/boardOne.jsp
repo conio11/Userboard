@@ -69,7 +69,7 @@
 	// comment list 결과셋
 	// SELECT comment_no, board_no, comment_content FROM COMMENT
 	// WHERE board_no=? LIMIT ?, ?;
-	String commentListSql = "SELECT comment_no commentNo, member_id memberID, board_no boardNo, comment_content commentContent, createdate, updatedate FROM COMMENT WHERE board_no=? LIMIT ?, ?";
+	String commentListSql = "SELECT comment_no commentNo, member_id memberID, board_no boardNo, comment_content commentContent, createdate, updatedate FROM comment WHERE board_no = ? LIMIT ?, ?";
 	PreparedStatement commentListStmt = conn.prepareStatement(commentListSql);
 	commentListStmt.setInt(1, boardNo);
 	commentListStmt.setInt(2, startRow);
@@ -161,6 +161,13 @@
 			}
 		%>
 		
+		<%
+			if (request.getParameter("msg2") != null) {
+		%>
+				<%=request.getParameter("msg2")%>
+		<%
+			}
+		%>
 		
 		<!-- boardOne 결과셋  -->
 		<table class="table table-bordered">
@@ -225,9 +232,9 @@
 		%>
 		
 		<%
-			if (request.getParameter("msg2") != null) {
+			if (request.getParameter("msgUpdate") != null) {
 		%>
-				<%=request.getParameter("msg2")%>
+				<%=request.getParameter("msgUpdate")%>
 		<%
 			}
 		%>

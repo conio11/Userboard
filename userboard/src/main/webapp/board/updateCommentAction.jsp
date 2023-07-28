@@ -63,14 +63,15 @@
 	// 쿼리 실행 및 실행값 반환
 	int row = updateStmt.executeUpdate();
 	System.out.println(row + " <-- row(updateCommentAction)");
+	String msgUpdate = "";
 	if (row == 1) { // 수정 성공
 		System.out.println("댓글 수정 완료");
-		msg = URLEncoder.encode("댓글이 수정되었습니다.", "UTF-8"); 
-		response.sendRedirect(request.getContextPath() + "/board/boardOne.jsp?boardNo=" + boardNo + "&msg=" + msg);
+		msgUpdate = URLEncoder.encode("댓글이 수정되었습니다.", "UTF-8"); 
+		response.sendRedirect(request.getContextPath() + "/board/boardOne.jsp?boardNo=" + boardNo + "&msgUpdate=" + msgUpdate);
 	} else { // 수정 실패
 		System.out.println("댓글 수정 실패");
-		msg = URLEncoder.encode("댓글이 수정되지 않았습니다.", "UTF-8"); 
-		response.sendRedirect(request.getContextPath() + "/board/boardOne.jsp?boardNo=" + boardNo + "&msg=" + msg);
+		msgUpdate = URLEncoder.encode("댓글이 수정되지 않았습니다.", "UTF-8"); 
+		response.sendRedirect(request.getContextPath() + "/board/boardOne.jsp?boardNo=" + boardNo + "&msg=Update" + msgUpdate);
 	}
 	
 	System.out.println("=====================");

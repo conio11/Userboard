@@ -125,148 +125,148 @@
     
 <!DOCTYPE html>
 <html>
-<head>
-      <title>home</title>
-      <jsp:include page="/inc/link.jsp"></jsp:include>
-	  <meta charset="utf-8">
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-	  <script src="https://cdn.jsEdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-	  <style>
-	  	.fakeimg {
-		    height: 200px;
-		    background: #aaa;
-		  }
-	  
-
-		.page-link {
-			color: #198754; /* 부트스트랩5 success 컬러코드*/
-		}
-		.page-item.active .page-link {
-			color: white;
-			background-color: #198754;
-			border-color: #198754;
-		} 
-	  </style>
-  <!-- ... CSS 및 JavaScript 링크 및 스타일 ... -->
-</head>
-<body>
-	<jsp:include page="/inc/mainmenu.jsp"></jsp:include> <!-- mainmenu.jsp 의 결과를 현재 페이지에서 사용 가능 -->
-  <div class="container mt-5">
-    <div class="row">
-      <!-- 왼쪽 컬럼 (로그인 폼 및 서브 카테고리) -->
-      <div class="col-sm-4">
-        <!-- 로그인 폼 -->
-        <div class="container mt-3">
-          <% if (request.getParameter("msg") != null) { %>
-            <%= request.getParameter("msg") %>
-          <% 
-          	}
-          %>
-          
-          <% if (session.getAttribute("loginMemberID") == null) { %>
-            <form action="<%=request.getContextPath()%>/member/loginAction.jsp" method="post" accept-charset="UTF-8"> 
-              <table class="table table-bordered table-sm">
-                <tr>
-                  <th class="table-success text-center">ID</th>
-                  <td><input type="text" name="memberID" class="form-control" placeholder="ID를 입력하세요."></td>
-                </tr>
-                <tr>
-                  <th class="table-success text-center">PW</th>
-                  <td><input type="password" name="memberPW" class="form-control" placeholder="비밀번호룰 입력하세요."></td>
-                </tr>
-              </table>
-              <button type="submit" class="btn btn-outline-success">로그인</button>
-            </form>
-            <br>
-          <% 
-          	} else { 
-       	   %>
-            <p style="color: blue;"><%= session.getAttribute("loginMemberID") %>님, 반갑습니다.</p>
-          <% 
-          	} 
-       	   %>
-        </div>
-        
-        <!-- 서브 카테고리 -->
-        <div class="container mt-3">
-          <ul class="list-group">
-            <% for (HashMap<String, Object> m : subMenuList) { %>
-              <li>
-                <a href="<%=request.getContextPath()%>/home.jsp?localName=<%=(String)m.get("localName")%>" class="btn">
-                  <%=m.get("localName")%>(<%=m.get("cnt")%>) <!-- Object 타입이므로 형변환 -->
-                </a>
-              </li>
-            <% } %>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- 오른쪽 컬럼 (테이블) -->
-      <div class="col-sm-8">
-        <table class="table table-bordered text-center">
-          <tr class="table-success">
-            <th>카테고리명</th>
-            <th>게시글 제목</th>
-            <th>작성일자</th>
-          </tr>
-          <!-- <c:foreach var="b" items="boardList"></c:foreach> -->
-          
-          <% for (Board b : boardList) { %>
-            <tr>
-              <td><%=b.getLocalName()%></td> 
-              <td>
-                <a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=b.getBoardNo()%>" class="btn btn-outline-light text-dark">
-                  <%=b.getBoardTitle()%>
-                </a>
-              </td>
-              <td><%=b.getCreatedate().substring(0, 10)%></td>
-            </tr>	
-          <% } %>
-        </table>
-        <a href="<%=request.getContextPath()%>/board/insertBoardForm.jsp" class="btn btn-outline-success">게시글 작성</a>
-        
-		<%
-			// 페이지 네비게이션 페이징
-			int pagePerPage = 10; // [이전] [다음] 탭 사이 페이지 개수
-			
-			// minPage: [이전] [다음] 탭 사이 가장 작은 숫자
-			// maxPage: [이전] [다음] 탭 사이 가장 큰 숫자
-			int minPage = ((currentPage - 1) / pagePerPage) * pagePerPage + 1;
-			int maxPage = minPage + (pagePerPage - 1);
-			if (maxPage > lastPage) { // maxPage가 마지막 페이지(최대 currentPage) 보다 클 수 없음
-				maxPage = lastPage;
+	<head>
+	      <title>home</title>
+	      <jsp:include page="/inc/link.jsp"></jsp:include>
+		  <meta charset="utf-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1">
+		  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+		  <script src="https://cdn.jsEdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+		  <style>
+		  	.fakeimg {
+			    height: 200px;
+			    background: #aaa;
+			  }
+		  
+	
+			.page-link {
+				color: #198754; /* 부트스트랩5 success 컬러코드*/
 			}
-		%>
-        <div class="text-center mt-3">
-          <ul class="pagination justify-content-center">
-            <% if (minPage > 1) { %>
-              <li class="page-item">
-                <a class="page-link" href="./home.jsp?currentPage=<%=minPage - pagePerPage%>&localName=<%=localName%>">Previous</a>
-              </li>
-            <% 
-            	}
-            %>
-            <% for (int i = minPage; i <= maxPage; i++) { %>
-              <li class="page-item <%= i == currentPage ? "active" : "" %>">
-                <a class="page-link" href="<%=request.getContextPath()%>/home.jsp?currentPage=<%=i%>&localName=<%=localName%>"><%=i%></a>
-              </li>
-            <% } %>
-            
-            <% if (maxPage < lastPage) { %>
-              <li class="page-item">
-                <a class="page-link" href="<%=request.getContextPath()%>/home.jsp?currentPage=<%=minPage + pagePerPage%>&localName=<%=localName%>">Next</a>
-              </li>
-            <% 
-            	} 
-           	%>
-          </ul>
-        </div> 
-      </div>
-      
-    </div>
-  </div>
-  
-  <jsp:include page="/inc/copyright.jsp"></jsp:include>
-</body>
+			.page-item.active .page-link {
+				color: white;
+				background-color: #198754;
+				border-color: #198754;
+			} 
+		  </style>
+	  <!-- ... CSS 및 JavaScript 링크 및 스타일 ... -->
+	</head>
+	<body>
+		<jsp:include page="/inc/mainmenu.jsp"></jsp:include> <!-- mainmenu.jsp 의 결과를 현재 페이지에서 사용 가능 -->
+	  <div class="container mt-5">
+	    <div class="row">
+	      <!-- 왼쪽 컬럼 (로그인 폼 및 서브 카테고리) -->
+	      <div class="col-sm-4">
+	        <!-- 로그인 폼 -->
+	        <div class="container mt-3">
+	          <% if (request.getParameter("msg") != null) { %>
+	            <%= request.getParameter("msg") %>
+	          <% 
+	          	}
+	          %>
+	          
+	          <% if (session.getAttribute("loginMemberID") == null) { %>
+	            <form action="<%=request.getContextPath()%>/member/loginAction.jsp" method="post" accept-charset="UTF-8"> 
+	              <table class="table table-bordered table-sm">
+	                <tr>
+	                  <th class="table-success text-center">ID</th>
+	                  <td><input type="text" name="memberID" class="form-control" value="user1" placeholder="ID를 입력하세요."></td>
+	                </tr>
+	                <tr>
+	                  <th class="table-success text-center">PW</th>
+	                  <td><input type="password" name="memberPW" class="form-control" value="1234" placeholder="비밀번호룰 입력하세요."></td>
+	                </tr>
+	              </table>
+	              <button type="submit" class="btn btn-outline-success">로그인</button>
+	            </form>
+	            <br>
+	          <% 
+	          	} else { 
+	       	   %>
+	            <p style="color: blue;"><%= session.getAttribute("loginMemberID") %>님, 반갑습니다.</p>
+	          <% 
+	          	} 
+	       	   %>
+	        </div>
+	        
+	        <!-- 서브 카테고리 -->
+	        <div class="container mt-3">
+	          <ul class="list-group">
+	            <% for (HashMap<String, Object> m : subMenuList) { %>
+	              <li>
+	                <a href="<%=request.getContextPath()%>/home.jsp?localName=<%=(String)m.get("localName")%>" class="btn">
+	                  <%=m.get("localName")%>(<%=m.get("cnt")%>) <!-- Object 타입이므로 형변환 -->
+	                </a>
+	              </li>
+	            <% } %>
+	          </ul>
+	        </div>
+	      </div>
+	      
+	      <!-- 오른쪽 컬럼 (테이블) -->
+	      <div class="col-sm-8">
+	        <table class="table table-bordered text-center">
+	          <tr class="table-success">
+	            <th>카테고리명</th>
+	            <th>게시글 제목</th>
+	            <th>작성일자</th>
+	          </tr>
+	          <!-- <c:foreach var="b" items="boardList"></c:foreach> -->
+	          
+	          <% for (Board b : boardList) { %>
+	            <tr>
+	              <td><%=b.getLocalName()%></td> 
+	              <td>
+	                <a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=b.getBoardNo()%>" class="btn btn-outline-light text-dark">
+	                  <%=b.getBoardTitle()%>
+	                </a>
+	              </td>
+	              <td><%=b.getCreatedate().substring(0, 10)%></td>
+	            </tr>	
+	          <% } %>
+	        </table>
+	        <a href="<%=request.getContextPath()%>/board/insertBoardForm.jsp" class="btn btn-outline-success">게시글 작성</a>
+	        
+			<%
+				// 페이지 네비게이션 페이징
+				int pagePerPage = 10; // [이전] [다음] 탭 사이 페이지 개수
+				
+				// minPage: [이전] [다음] 탭 사이 가장 작은 숫자
+				// maxPage: [이전] [다음] 탭 사이 가장 큰 숫자
+				int minPage = ((currentPage - 1) / pagePerPage) * pagePerPage + 1;
+				int maxPage = minPage + (pagePerPage - 1);
+				if (maxPage > lastPage) { // maxPage가 마지막 페이지(최대 currentPage) 보다 클 수 없음
+					maxPage = lastPage;
+				}
+			%>
+	        <div class="text-center mt-3">
+	          <ul class="pagination justify-content-center">
+	            <% if (minPage > 1) { %>
+	              <li class="page-item">
+	                <a class="page-link" href="./home.jsp?currentPage=<%=minPage - pagePerPage%>&localName=<%=localName%>">Previous</a>
+	              </li>
+	            <% 
+	            	}
+	            %>
+	            <% for (int i = minPage; i <= maxPage; i++) { %>
+	              <li class="page-item <%= i == currentPage ? "active" : "" %>">
+	                <a class="page-link" href="<%=request.getContextPath()%>/home.jsp?currentPage=<%=i%>&localName=<%=localName%>"><%=i%></a>
+	              </li>
+	            <% } %>
+	            
+	            <% if (maxPage < lastPage) { %>
+	              <li class="page-item">
+	                <a class="page-link" href="<%=request.getContextPath()%>/home.jsp?currentPage=<%=minPage + pagePerPage%>&localName=<%=localName%>">Next</a>
+	              </li>
+	            <% 
+	            	} 
+	           	%>
+	          </ul>
+	        </div> 
+	      </div>
+	      
+	    </div>
+	  </div>
+	  
+	  <jsp:include page="/inc/copyright.jsp"></jsp:include>
+	</body>
 </html>

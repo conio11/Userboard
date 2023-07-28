@@ -92,7 +92,7 @@
 			<form action="<%=request.getContextPath()%>/board/updateCommentAction.jsp" method="post">
 				<input type="hidden" name="boardNo" value="<%=boardNo%>">
 				<input type="hidden" name="commentNo" value="<%=commentNo%>">
-				<input type="hidden" name="memberId" value="<%=memberID%>">
+				<input type="hidden" name="memberID" value="<%=memberID%>">
 				
 				<table class="table table-bordered">
 					<tr>

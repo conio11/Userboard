@@ -79,9 +79,9 @@
 	</head>
 	<body>
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
-			<div class="container mt-3">
-	
-			<br>
+		<div class="container mt-3">
+			<a href="<%=request.getContextPath()%>/local/localOne.jsp" class="btn btn-outline-success">이전</a>
+			<br><br>
 			<!-- cnt가 0 (게시글이 0)인 경우에만 form 태그 출력  -->
 			<%
 				if (cnt == 0) {
@@ -112,7 +112,7 @@
 					<h5>게시글이 존재하므로 삭제 불가능합니다.</h5>
 					<h5><%=localName%> 카테고리 게시글 수: <%=cnt%></h5>
 					
-					<a href="<%=request.getContextPath()%>/local/localOne.jsp" class="btn btn-outline-success">이전</a>
+					<%-- <a href="<%=request.getContextPath()%>/local/localOne.jsp" class="btn btn-outline-success">이전</a> --%>
 			<%
 				}
 			%>

@@ -75,49 +75,49 @@
 		<jsp:include page="/inc/mainmenu.jsp"></jsp:include>
 
 		<div class="container mt-3">
-		<a href="<%=request.getContextPath()%>/local/localOne.jsp" class="btn btn-outline-success">이전</a>
-		<br>
-		<!-- cnt가 0 (게시글이 0)인 경우에만 form 태그 출력  -->
-		<%
-			if (cnt == 0) { 
-		%>
-			<div class="text-center">
-				<h1>카테고리명 수정</h1>
-			</div><br>
-		<%
-			if (request.getParameter("msg") != null) {	
-		%>
-				<%=request.getParameter("msg")%>
-		<%
-			}
-		%>
-		<form action="<%=request.getContextPath()%>/local/updateLocalAction.jsp" method="post"> 
-			<input type="hidden" name="localName" value="<%=localName%>">
-			<table class="table table-bordered">
-				<tr>
-					<th class="table-success text-center">현재 카테고리명</th>
-					<td><%=localName%></td>
-				</tr>
-				<tr>
-					<th class="table-success text-center">새 카테고리명</th>
-					<td><input type="text" name="newLocalName" class="form-control w-25"></td>
-				</tr>
-			</table>
-			<button type="submit" class="btn btn-outline-success">수정</button>
-		</form>
-		<%
-			} else {
-		%>
-			
-			<h5>게시글이 존재하므로 수정 불가능합니다.</h5>
-			<h5><%=localName%> 카테고리 게시글 수: <%=cnt%></h5>
-		
 			<a href="<%=request.getContextPath()%>/local/localOne.jsp" class="btn btn-outline-success">이전</a>
-		<%
-			}
-		%>
-		<br>
-		<br>
+			<br><br>
+			<!-- cnt가 0 (게시글이 0)인 경우에만 form 태그 출력  -->
+			<%
+				if (cnt == 0) { 
+			%>
+				<div class="text-center">
+					<h1>카테고리명 수정</h1>
+				</div><br>
+			<%
+				if (request.getParameter("msg") != null) {	
+			%>
+					<%=request.getParameter("msg")%>
+			<%
+				}
+			%>
+			<form action="<%=request.getContextPath()%>/local/updateLocalAction.jsp" method="post"> 
+				<input type="hidden" name="localName" value="<%=localName%>">
+				<table class="table table-bordered">
+					<tr>
+						<th class="table-success text-center">현재 카테고리명</th>
+						<td><%=localName%></td>
+					</tr>
+					<tr>
+						<th class="table-success text-center">새 카테고리명</th>
+						<td><input type="text" name="newLocalName" class="form-control w-25"></td>
+					</tr>
+				</table>
+				<button type="submit" class="btn btn-outline-success">수정</button>
+			</form>
+			<%
+				} else {
+			%>
+				
+				<h5>게시글이 존재하므로 수정 불가능합니다.</h5>
+				<h5><%=localName%> 카테고리 게시글 수: <%=cnt%></h5>
+			
+				<%-- <a href="<%=request.getContextPath()%>/local/localOne.jsp" class="btn btn-outline-success">이전</a> --%>
+			<%
+				}
+			%>
+			<br>
+			<br>
 		</div>
 		<jsp:include page="/inc/copyright.jsp"></jsp:include>
 	</body>

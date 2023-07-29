@@ -201,10 +201,15 @@
 			</tr>
 		</table>
 
-		<div>
-			<a href="<%=request.getContextPath()%>/board/updateBoardForm.jsp?boardNo=<%=board.getBoardNo()%>&localName=<%=board.getLocalName()%>&boardTitle=<%=board.getBoardTitle()%>&boardContent=<%=board.getBoardContent()%>&memberID=<%=board.getMemberID()%>" class="btn btn-outline-success">게시글 수정</a>
-			<a href="<%=request.getContextPath()%>/board/deleteBoardForm.jsp?boardNo=<%=board.getBoardNo()%>&localName=<%=board.getLocalName()%>&boardTitle=<%=board.getBoardTitle()%>&boardContent=<%=board.getBoardContent()%>&memberID=<%=board.getMemberID()%>" class="btn btn-outline-success">삭제</a>
-		</div>
+       	<% if (session.getAttribute("loginMemberID") != null) { %>
+	   		<div>
+				<a href="<%=request.getContextPath()%>/board/updateBoardForm.jsp?boardNo=<%=board.getBoardNo()%>&localName=<%=board.getLocalName()%>&boardTitle=<%=board.getBoardTitle()%>&boardContent=<%=board.getBoardContent()%>&memberID=<%=board.getMemberID()%>" class="btn btn-outline-success">게시글 수정</a>
+				<a href="<%=request.getContextPath()%>/board/deleteBoardForm.jsp?boardNo=<%=board.getBoardNo()%>&localName=<%=board.getLocalName()%>&boardTitle=<%=board.getBoardTitle()%>&boardContent=<%=board.getBoardContent()%>&memberID=<%=board.getMemberID()%>" class="btn btn-outline-success">삭제</a>
+			</div>
+        <%
+        	 }
+        %>
+	
 		
 		<br>
 		

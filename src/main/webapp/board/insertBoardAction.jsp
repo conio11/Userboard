@@ -47,9 +47,9 @@
 	String dbUser = "root";
 	String dbPw = "java1234";
 	Class.forName(driver);
-	System.out.println("드라이버 로딩 성공(updateBoardAction)");
+	System.out.println("드라이버 로딩 성공(insertBoardAction)");
 	Connection conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
-	System.out.println("DB 접속 성공(updateBoardAction)");
+	System.out.println("DB 접속 성공(insertBoardAction)");
 	
 	// 게시글 입력(insert) 쿼리문 - board 테이블에 board_no 제외 모든 컬럼값 입력
 	String insertSql = "INSERT INTO board (local_name, board_title, board_content, member_id, createdate, updatedate) VALUES (?, ?, ?, ?, NOW(), NOW())";

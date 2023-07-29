@@ -69,9 +69,9 @@
 		<form action="<%=request.getContextPath()%>/board/insertBoardAction.jsp" method="post">
 			<table class="table table-bordered">
 				<tr>
-					<th class="table-success text-center">localName</th>
+					<th class="table-success text-center">카테고리명</th>
 					<td><!-- <input type="text" name="localName" class="form-control w-25"> -->
-						<select class="form-select" name="localName" id="localName">
+						<select class="form-select" name="localName">
 							<option value="">선택</option>
                     <%
                         while (rs.next()) {
@@ -86,11 +86,11 @@
 					</td>
 				</tr>
 				<tr>
-					<th class="table-success text-center">boardTitle</th>
+					<th class="table-success text-center">게시글 제목</th>
 					<td><input type="text" name="boardTitle" class="form-control"></td>
 				</tr>
 				<tr>
-					<th class="table-success text-center">boardContent</th>
+					<th class="table-success text-center">게시글 내용</th>
 					<td><textarea rows="2" cols="80" name="boardContent" class="form-control"></textarea></td>
 				</tr>
 			</table>

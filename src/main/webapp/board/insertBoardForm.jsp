@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
 <%@ page import="java.net.*" %> 
+
 <%
 	// 게시글 입력 폼
 	// 로그인 상태여야 입력 가능
@@ -17,6 +19,22 @@
 	}
 	String loginMemberID = (String) session.getAttribute("loginMemberID");
 	System.out.println(loginMemberID + " <-- loginMemberID(insertBoardForm)");
+	
+	// DB 연결
+	String driver = "org.mariadb.jdbc.Driver";
+	String dbUrl = "jdbc:mariadb://127.0.0.1:3306/userboard";
+	String dbUser = "root";
+	String dbPw = "java1234";
+	Class.forName(driver);
+	System.out.println("드라이버 로딩 성공(insertBoardForm)");
+	Connection conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
+	System.out.println("DB 접속 성공(insertBoardForm)");
+	
+	// localName 선택 쿼리문
+	String sql = "SELECT local_name FROM local";
+	PreparedStatement stmt = conn.prepareStatement(sql);
+	ResultSet rs = stmt.executeQuery();
+	
 	
 	System.out.println("==========================================");
 %>
@@ -52,7 +70,20 @@
 			<table class="table table-bordered">
 				<tr>
 					<th class="table-success text-center">localName</th>
-					<td><input type="text" name="localName" class="form-control w-25"></td>
+					<td><!-- <input type="text" name="localName" class="form-control w-25"> -->
+						<select class="form-select" name="localName" id="localName">
+							<option value="">선택</option>
+                    <%
+                        while (rs.next()) {
+                            String localName = rs.getString("local_name");
+                    %>
+                            <option value="<%=localName%>"><%=localName%></option>
+                    <% 
+                        }
+                    %> 
+							
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<th class="table-success text-center">boardTitle</th>

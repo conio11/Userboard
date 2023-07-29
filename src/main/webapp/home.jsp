@@ -236,7 +236,13 @@
 	            </tr>	
 	          <% } %>
 	        </table>
-	        <a href="<%=request.getContextPath()%>/board/insertBoardForm.jsp" class="btn btn-outline-success">게시글 작성</a>
+	        
+	        <% if (session.getAttribute("loginMemberID") != null) { %>
+	        	<a href="<%=request.getContextPath()%>/board/insertBoardForm.jsp" class="btn btn-outline-success">게시글 작성</a>
+	        <%
+	         }
+	        %>
+	        	
 	        
 			<%
 				// 페이지 네비게이션 페이징

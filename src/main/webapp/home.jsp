@@ -103,14 +103,26 @@
 	System.out.println(boardList + " <--boardList(home)");
 	System.out.println(boardList.size() + " <--boardList.size()(home)");
 	
-	// 마지막 페이지 모델링
-	String pageSql = "SELECT COUNT(*) FROM board";
+	// 마지막 페이지 모델링 수정 (지역별 행 수 맞추기)
+	String pageSql = "";
+	if (localName.equals("전체")) {
+		pageSql = "SELECT COUNT(*) FROM board";
+	} else {
+		pageSql = "SELECT COUNT(*) FROM board WHERE local_name = ?";
+	}
+	
 	PreparedStatement pageStmt = conn.prepareStatement(pageSql);
+	if (!localName.equals("전체")) {
+		pageStmt.setString(1, localName);
+	}
+	
 	ResultSet pageRs = pageStmt.executeQuery();
+	
 	int totalRow = 0;
 	if (pageRs.next()) {
 		totalRow = pageRs.getInt("COUNT(*)");
 	}
+	
 	int lastPage = totalRow / rowPerPage;
 	if (totalRow % rowPerPage != 0) {
 		lastPage += 1;
